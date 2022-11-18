@@ -28,6 +28,12 @@ resource "aws_security_group" "SG_OrilyInstanceWeb" {
     		to_port          = 0
     		protocol         = "-1"
     		cidr_blocks      = ["0.0.0.0/0"]
-  }
+  	}
+
+	tags = {
+
+		Name		=	var.name
+		Responsible	=	var.Responsible
+	}
 
 }

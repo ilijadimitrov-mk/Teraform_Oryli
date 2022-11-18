@@ -12,3 +12,14 @@ resource "local_file" "ssh_key" {
   filename = "${aws_key_pair.kp.key_name}.pem"
   content = tls_private_key.pk.private_key_pem
 }
+
+resource "aws_ssm_parameter" "secret" {
+  name        = "SSH_Key"
+  description = "SSH PEM key"
+  type        = "SecureString"
+  value       = tls_private_key.pk.private_key_pem
+
+  tags = {
+    environment = "production"
+  }
+}
