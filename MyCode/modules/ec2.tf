@@ -1,7 +1,3 @@
-provider "aws" {
- region = "us-west-2"
-}
-
 resource "aws_instance" "OrilyInstanceWeb" {
 	ami		=	data.aws_ami.LinuxAMI.id
 	instance_type	=	var.InstanceType
