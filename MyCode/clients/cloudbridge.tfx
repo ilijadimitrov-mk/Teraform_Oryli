@@ -1,0 +1,21 @@
+resource "aws_cloudwatch_event_rule" "My_Rule_notification" {
+	description    = "notifyMe"
+	event_pattern  = jsonencode(
+	{
+		detail      = {
+                instance-id = [
+                "i-0455c5e07227676e6",
+                 ]
+        	}
+        detail-type = [
+        	"EC2 Instance State-change Notification",
+        ]
+        source      = [
+        	"aws.ec2",
+        ]
+        }
+        )
+#        id             = aws_cloudwatch_event_rule.My_Rule_notification.id
+        name           = "My_Rule"
+        tags           = {}
+}

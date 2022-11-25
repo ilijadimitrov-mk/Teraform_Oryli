@@ -1,0 +1,23 @@
+resource "aws_cloudwatch_event_rule" "My_Rule" {
+      event_bus_name = "default"
+      event_pattern  = jsonencode(
+            {
+              detail-type = [
+                  "EC2 Instance State-change Notification",
+                ]
+              source      = [
+                  "aws.ec2",
+                ]
+            }
+        )
+      is_enabled     = true
+      name           = "My_Rule"
+      tags           = {}
+      tags_all       = {}
+    }
+
+resource "aws_cloudwatch_event_target" "Alarm_On_CPU" {
+
+	rule	=	""
+	arn	=	""
+}
